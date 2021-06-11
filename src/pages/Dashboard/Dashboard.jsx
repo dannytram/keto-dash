@@ -33,6 +33,7 @@ function Dashboard() {
                 <div>Item 2</div>
                 <div>Item 3</div>
                 <div>Item 4</div>
+                <div>Item 5</div>
             </Carousel>
         </div>
     )

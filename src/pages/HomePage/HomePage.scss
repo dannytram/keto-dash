@@ -1,3 +1,5 @@
+@import "../../styles/mixins", "../../styles/variables", "../../styles/typography";
+
 .hero{
     background-color: #cee5d0;
     display: flex;
@@ -12,7 +14,81 @@
         align-items: center;
     }
 
+    &__info-text-h1{
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        padding: 0 0 0 1rem;
+        margin-bottom: 0;
+        font-family: "Poppins Bold";
+        font-size: 3rem;
+    }
+
+    &__info-text-h2{
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        padding: 0 1rem 0 1rem;
+        font-family: "Poppins Bold";
+    }
+
     &__image{
-        width: 100%;
+        padding: 1rem 0rem;
+        max-width: 100%;
+    }
+}
+
+.info-section{
+    &__section1{
+        padding-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__section2{
+        padding-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__coupleimg,
+    &__phoneimg{
+        border-radius: 10px;
+        width: auto;
+    }
+
+    &__coupletxt,
+    &__phonetxt{
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        align-items: left;
+        margin-top: 0;
+        padding: 0 2rem 2rem 2rem;
+        font-family: "Poppins";
+        }
+
+    &__coupletxt-h1,
+    &__phonetxt-h1{
+        margin: 0;
+        padding-top: 2rem;
+        font-family: "Christmas Regular";
+        font-size: 2.25rem;
+    }
+
+    &__section1-list,
+    &__section2-list{
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }   
+
+    &__section1-list-item::before,
+    &__section2-list-item::before{
+        content: '\1F951';
     }
 }
