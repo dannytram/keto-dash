@@ -1,0 +1,21 @@
+*::before,
+*::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.card{
+    display: flex;
+    justify-content: center;
+    
+    &__body{
+        font-family: "Poppins";
+        margin: 2rem;
+    }
+
+    &__title{
+        display: flex;
+        justify-content: center;
+    }
+}

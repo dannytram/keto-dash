@@ -1,5 +1,6 @@
 import React from 'react'
 import NavBar from "../../components/NavBar/NavBar"
+import Cards from "../../components/Cards/Cards"
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
@@ -29,11 +30,26 @@ function Dashboard() {
         <div>
             <NavBar />
             <Carousel responsive={responsive}>
-                <div>Item 1</div>
-                <div>Item 2</div>
-                <div>Item 3</div>
-                <div>Item 4</div>
-                <div>Item 5</div>
+                    <Cards
+                        img="https://powerusers.microsoft.com/t5/image/serverpage/image-id/65557iBB580A7889411925/image-size/large?v=v2&px=999"
+                        title="Net Carbs"
+                    />
+                    <Cards
+                        img="https://powerusers.microsoft.com/t5/image/serverpage/image-id/65557iBB580A7889411925/image-size/large?v=v2&px=999"
+                        title="Calories"
+                    />
+                    <Cards
+                        img="https://powerusers.microsoft.com/t5/image/serverpage/image-id/65557iBB580A7889411925/image-size/large?v=v2&px=999"
+                        title="Fat"
+                    />
+                    <Cards
+                        img="https://powerusers.microsoft.com/t5/image/serverpage/image-id/65557iBB580A7889411925/image-size/large?v=v2&px=999"
+                        title="Protein"
+                    />
+                    <Cards
+                        img="https://powerusers.microsoft.com/t5/image/serverpage/image-id/65557iBB580A7889411925/image-size/large?v=v2&px=999"
+                        title="Carbohydrates"
+                    />
             </Carousel>
         </div>
     )
