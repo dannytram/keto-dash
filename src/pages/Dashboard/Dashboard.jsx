@@ -1,7 +1,8 @@
 import React from 'react'
 import NavBar from "../../components/NavBar/NavBar"
-import Cards from "../../components/Cards/Cards"
 import Carousel from "react-multi-carousel";
+import Cards from "../../components/Cards/Cards"
+import BreakfastLog from "../../components/Log/BreakfastLog"
 import "react-multi-carousel/lib/styles.css";
 
 const responsive = {
@@ -51,6 +52,7 @@ function Dashboard() {
                         title="Carbohydrates"
                     />
             </Carousel>
+            <BreakfastLog />
         </div>
     )
 }

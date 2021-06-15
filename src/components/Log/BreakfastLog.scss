@@ -1,0 +1,226 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.mobile-log{
+    @include tablet{
+        display: none;
+    }
+    &__container{
+        width: auto;
+        overflow: hidden;
+        box-shadow: 0px 0px 15px -5px;
+        margin: 2rem;
+        background-color: #cee5d0;
+        border-radius: 2.5rem;
+    }
+
+    &__form{
+        display: flex;
+        flex-direction: column;
+        margin: 1rem;
+    }
+    &__title{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Poppins;
+        font-size: 1.5rem;
+        margin-top: 2rem;
+        padding-bottom: 1rem;
+    }
+
+    &__input{
+        border: none; 
+        border-bottom: 1px solid black;
+        background-color: #cee5d0;
+        margin: 0 2rem 0 2rem;
+    }
+
+    &__input:focus{
+        outline: none;
+    }
+
+    &__button-wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 1rem;
+    }
+
+    &__button{
+        background-color:#798777;
+        border-radius:42px;
+        display:inline-block;
+        cursor:pointer;
+        color:#ffffff;
+        font-family: Poppins;
+        font-size:17px;
+        font-weight:bold;
+        padding:14px 53px;
+        text-decoration:none;
+    }
+
+    &__button:active{
+        position:relative;
+        top:1px;
+    }
+
+    &__log-wrapper{
+        margin-bottom: 2rem;
+    }
+
+    &__log{
+        display: flex;
+        justify-content: space-between;
+        border-bottom: solid 1px grey;
+        padding-top: 0.5rem;
+        margin: 0rem 3rem 0rem 3rem;
+    }
+
+    &__food,
+    &__weight{
+        font-family: Poppins;
+        margin: 0;
+    }
+
+    &__carbs,
+    &__carbs-amt{
+        font-family: Poppins;
+        margin: 0;
+    }
+
+    &__total-food,
+    &__total-carbs{
+        font-family: Poppins Extra Bold;
+        margin: 0;
+    }
+
+    &__cals,
+    &__cals-amt{
+        display: none;
+    }
+}
+
+.tablet-log{
+    display: none;
+    @include tablet{
+        display: inline;
+    }
+
+    &__container{
+        width: auto;
+        overflow: hidden;
+        box-shadow: 0px 0px 15px -5px;
+        margin: 2rem 5rem 2rem 5rem;
+        background-color: #cee5d0;
+        border-radius: 2.5rem;
+    }
+
+    &__form{
+        display: flex;
+        flex-direction: column;
+        margin: 1rem;
+    }
+    &__title{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Poppins;
+        font-size: 1.5rem;
+        margin-top: 2rem;
+        padding-bottom: 1rem;
+    }
+
+    &__input{
+        border: none; 
+        border-bottom: 1px solid black;
+        background-color: #cee5d0;
+        margin: 0 2rem 0 2rem;
+    }
+
+    &__input:focus{
+        outline: none;
+    }
+
+    &__button-wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 1rem;
+    }
+
+    &__button{
+        background-color:#798777;
+        border-radius:42px;
+        display:inline-block;
+        cursor:pointer;
+        color:#ffffff;
+        font-family: Poppins;
+        font-size:17px;
+        font-weight:bold;
+        padding:14px 53px;
+        text-decoration:none;
+    }
+
+    &__button:active{
+        position:relative;
+        top:1px;
+    }
+
+    &__log-wrapper{
+        margin-bottom: 2rem;
+    }
+
+    &__log{
+        display: flex;
+        justify-content: space-between;
+        border-bottom: solid 1px grey;
+        padding-top: 0.5rem;
+        margin: 0rem 3rem 0rem 3rem;
+    }
+
+    &__food,
+    &__weight{
+        font-family: Poppins;
+        margin: 0;
+    }
+
+    &__stats{
+        display: flex;
+    }
+
+    &__carbs,
+    &__carbs-amt{
+        font-family: Poppins;
+        margin: 0 1rem 0 1rem;
+    }
+
+    &__cals,
+    &__cals-amt{
+        font-family: Poppins;
+        margin: 0 1rem 0 1rem;
+    }
+    
+    &__fats,
+    &__fats-amt{
+        font-family: Poppins;
+        margin: 0 1rem 0 1rem;
+    }
+
+    &__protein,
+    &__protein-amt{
+        font-family: Poppins;
+        margin: 0 1rem 0 1rem;
+    }
+
+    &__total-food,
+    &__total-carbs,
+    &__total-cals,
+    &__total-fats,
+    &__total-protein{
+        font-family: Poppins Extra Bold;
+        margin: 0 0.75rem 0 1rem;
+    }
+}
+
+
