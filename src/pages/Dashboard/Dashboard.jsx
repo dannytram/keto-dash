@@ -1,7 +1,9 @@
 import React from 'react'
 import NavBar from "../../components/NavBar/NavBar"
 import Carousel from "react-multi-carousel";
-import Cards from "../../components/Cards/Cards"
+import CardsCarbs from "../../components/Cards/CardsCarbs"
+import CardsCals from "../../components/Cards/CardsCals"
+import CardsFats from "../../components/Cards/CardsFats"
 import BreakfastLog from "../../components/Log/BreakfastLog"
 import "react-multi-carousel/lib/styles.css";
 
@@ -31,26 +33,24 @@ function Dashboard() {
         <div>
             <NavBar />
             <Carousel responsive={responsive}>
-                    <Cards
-                        img="https://powerusers.microsoft.com/t5/image/serverpage/image-id/65557iBB580A7889411925/image-size/large?v=v2&px=999"
+                    <CardsCarbs
                         title="Net Carbs"
                     />
-                    <Cards
-                        img="https://powerusers.microsoft.com/t5/image/serverpage/image-id/65557iBB580A7889411925/image-size/large?v=v2&px=999"
+                    <CardsCals
                         title="Calories"
                     />
-                    <Cards
+                    <CardsFats
                         img="https://powerusers.microsoft.com/t5/image/serverpage/image-id/65557iBB580A7889411925/image-size/large?v=v2&px=999"
                         title="Fat"
                     />
-                    <Cards
+                    {/* <Cards
                         img="https://powerusers.microsoft.com/t5/image/serverpage/image-id/65557iBB580A7889411925/image-size/large?v=v2&px=999"
                         title="Protein"
                     />
                     <Cards
                         img="https://powerusers.microsoft.com/t5/image/serverpage/image-id/65557iBB580A7889411925/image-size/large?v=v2&px=999"
                         title="Carbohydrates"
-                    />
+                    /> */}
             </Carousel>
             <BreakfastLog />
         </div>

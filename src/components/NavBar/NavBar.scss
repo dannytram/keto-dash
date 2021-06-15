@@ -1,3 +1,6 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
 .navbar{
     background-color: #cee5d0;
     height: 4.5rem;
@@ -8,5 +11,21 @@
     &__logo{
         width: 6rem;
         height: 4rem;
+    }
+
+    &__links{
+        display: none;
+        @include tablet{
+        display: flex;
+        justify-content: space-evenly;
+        list-style: none;
+        font-family: Poppins;
+        font-size: 1.25rem;
+        color: black;
+        }
+    }
+
+    &__item{
+        padding-right: 4rem;
     }
 }

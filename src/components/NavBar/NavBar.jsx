@@ -1,5 +1,5 @@
 import React from 'react'
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import { Link } from "react-router-dom"
 import Logo from "../../assets/images/Logo.png"
 import "./NavBar.scss"
 
@@ -7,15 +7,16 @@ function NavBar() {
     return (
         <div>
             <header className="navbar">
-                <img className="navbar__logo" src={Logo} alt="Keto Dash" href="/" />
+                <Link to="/">
+                    <img className="navbar__logo" src={Logo} alt="Keto Dash" href="/" />
+                </Link>
                 <div>
-                    <ul>
-                        <li>Dashboard</li>
-                        <li>Progress</li>
-                        <li>Goals</li>
+                    <ul className="navbar__links">
+                        <li className="navbar__item">Dashboard</li>
+                        <li className="navbar__item">Progress</li>
+                        <li className="navbar__item">Goals</li>
                     </ul>
                 </div>
-                <AccountCircleIcon />
             </header>
         </div>
     )

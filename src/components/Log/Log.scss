@@ -93,6 +93,7 @@
     &__total-carbs{
         font-family: Poppins Extra Bold;
         margin: 0;
+        padding-bottom: 1rem;
     }
 
     &__cals,
@@ -213,13 +214,18 @@
         margin: 0 1rem 0 1rem;
     }
 
-    &__total-food,
+    &__total-food{
+        font-family: Poppins Extra Bold;
+        margin: 0;
+    }
+
+
     &__total-carbs,
     &__total-cals,
     &__total-fats,
     &__total-protein{
         font-family: Poppins Extra Bold;
-        margin: 0 0.75rem 0 1rem;
+        margin: 0 0.8rem 0 1rem;
     }
 }
 
