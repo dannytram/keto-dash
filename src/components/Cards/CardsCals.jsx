@@ -19,7 +19,7 @@ function Cards(props) {
                     styles={buildStyles({
                         pathColor: '#cee5d0',
                         textColor: '#000000',
-                    })} />;
+                    })} />
                 </div>
             </div>
         </div>

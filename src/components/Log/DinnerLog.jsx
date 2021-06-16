@@ -2,25 +2,15 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import './Log.scss'
 
-// let query = '100g brown rice'
 
-//   carbs: response.data.totalNutrients.CHOCDF,
-//   calories: response.data.calories,
-//   fats: response.data.totalNutrients.FAT,
-//   protein: response.data.totalNutrients.PROCNT,
-
-class BreakfastLog extends Component {
+class DinnerLog extends Component {
     state = {
         carbs: [],
         calories: [],
         fats: [],
         protein: [],
         query: '',
-        breakfastItems: [],
-    }
-
-    financial = (x) => {
-        return Number.parseFloat(x).toFixed(2);
+        dinnerItems: [],
     }
 
     changeBreakfast = (e) => {
@@ -38,17 +28,17 @@ class BreakfastLog extends Component {
                     `https://api.edamam.com/api/nutrition-data?app_id=bc0b3d95&app_key=%20d31b2e3e059682d95464fdba90dbace8&nutrition-type=logging&ingr=${this.state.query}`
                 )
                 .then((response) => {
-                    let breakfastLog = [...this.state.breakfastItems]
+                    let dinnerLog = [...this.state.dinnerItems]
                     let addedItems = {
                         name: this.state.query,
-                        carbs: response.data.totalNutrients.CHOCDF.quantity.toFixed(1),
-                        calories: response.data.calories.toFixed(1),
-                        fats: response.data.totalNutrients.FAT.quantity.toFixed(1),
-                        protein: response.data.totalNutrients.PROCNT.quantity.toFixed(1),
+                        carbs: response.data.totalNutrients.CHOCDF.quantity,
+                        calories: response.data.calories,
+                        fats: response.data.totalNutrients.FAT.quantity,
+                        protein: response.data.totalNutrients.PROCNT.quantity,
                     }
-                    breakfastLog.push(addedItems)
+                    dinnerLog.push(addedItems)
                     this.setState({
-                        breakfastItems: breakfastLog,
+                        dinnerItems: dinnerLog,
                     })
                 })
                 .catch((error) => {
@@ -63,12 +53,12 @@ class BreakfastLog extends Component {
                 <div className='mobile-log'>
                     <div className='mobile-log__container'>
                         <form className='mobile-log__form' onSubmit={this.changeBreakfast}>
-                            <label className='mobile-log__title'>Breakfast</label>
+                            <label className='mobile-log__title'>Dinner</label>
                             <input
                                 className='mobile-log__input'
                                 type='text'
                                 name='meal'
-                                placeholder='What did you have for Breakfast today?'
+                                placeholder='What did you have for Dinner today?'
                             />
                             <div className='mobile-log__button-wrapper'>
                                 <input
@@ -78,7 +68,7 @@ class BreakfastLog extends Component {
                                 />
                             </div>
                         </form>
-                        {this.state.breakfastItems.map((item) => (
+                        {this.state.dinnerItems.map((item) => (
                             <div className='mobile-log__log-wrapper'>
                                 <div className='mobile-log__log'>
                                     <div className='mobile-log__food'>
@@ -103,17 +93,16 @@ class BreakfastLog extends Component {
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div className='tablet-log'>
                     <div className='tablet-log__container'>
                         <form className='tablet-log__form' onSubmit={this.changeBreakfast}>
-                            <label className='tablet-log__title'>Breakfast</label>
+                            <label className='tablet-log__title'>Dinner</label>
                             <input
                                 className='tablet-log__input'
                                 type='text'
                                 name='meal'
-                                placeholder='What did you have for Breakfast today?'
+                                placeholder='What did you have for Dinner today?'
                             />
                             <div className='tablet-log__button-wrapper'>
                                 <input
@@ -123,7 +112,7 @@ class BreakfastLog extends Component {
                                 />
                             </div>
                         </form>
-                        {this.state.breakfastItems.map((item) => (
+                        {this.state.dinnerItems.map((item) => (
                             <div className='tablet-log__log-wrapper'>
                                 <div className='tablet-log__log'>
                                     <div className='tablet-log__food'>
@@ -196,4 +185,4 @@ class BreakfastLog extends Component {
     }
 }
 
-export default BreakfastLog
+export default DinnerLog
