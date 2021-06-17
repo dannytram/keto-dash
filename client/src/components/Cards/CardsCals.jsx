@@ -3,7 +3,7 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import "./Cards.scss"
 
-const value = 0.52;
+const value = 600;
 
 
 function Cards(props) {
@@ -14,11 +14,12 @@ function Cards(props) {
                 <div style={{ width: 200, height: 200 }}>
                     <CircularProgressbar 
                     value={value} 
-                    maxValue={1} 
-                    text={`${value * 100}%`}
+                    maxValue={2000} 
+                    text={`${value}/2000`}
                     styles={buildStyles({
                         pathColor: '#cee5d0',
                         textColor: '#000000',
+                        textSize: '16px'
                     })} />
                 </div>
             </div>

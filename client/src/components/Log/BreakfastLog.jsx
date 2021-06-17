@@ -19,6 +19,15 @@ class BreakfastLog extends Component {
         breakfastItems: [],
     }
 
+    findCarbs = (breakfastItems) => {
+        let initialValue = 0;
+        let total = breakfastItems.reduce(function (accumlator, currentValue) {
+            return accumlator + currentValue.x
+        }, initialValue);
+
+        console.log(total)
+    }
+
     financial = (x) => {
         return Number.parseFloat(x).toFixed(2);
     }
@@ -50,6 +59,7 @@ class BreakfastLog extends Component {
                     this.setState({
                         breakfastItems: breakfastLog,
                     })
+                    console.log("breakfastItems:", this.state.breakfastItems);
                 })
                 .catch((error) => {
                     console.log(error)

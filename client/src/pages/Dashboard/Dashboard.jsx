@@ -36,20 +36,9 @@ function Dashboard() {
             <Carousel responsive={responsive}>
                 <CardsCarbs title='Net Carbs' />
                 <CardsCals title='Calories' />
-                <CardsFats
-                    img='https://powerusers.microsoft.com/t5/image/serverpage/image-id/65557iBB580A7889411925/image-size/large?v=v2&px=999'
-                    title='Fat'
-                />
-                {/* <Cards
-                        img="https://powerusers.microsoft.com/t5/image/serverpage/image-id/65557iBB580A7889411925/image-size/large?v=v2&px=999"
-                        title="Protein"
-                    />
-                    <Cards
-                        img="https://powerusers.microsoft.com/t5/image/serverpage/image-id/65557iBB580A7889411925/image-size/large?v=v2&px=999"
-                        title="Carbohydrates"
-                    /> */}
+                <CardsFats title='Fats'/>
             </Carousel>
-            <BreakfastLog />
+            <BreakfastLog/>
             <LunchLog />
             <DinnerLog />
         </div>
