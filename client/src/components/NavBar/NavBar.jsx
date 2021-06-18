@@ -15,6 +15,7 @@ function NavBar() {
                         <li className="navbar__item">Dashboard</li>
                         <li className="navbar__item">Progress</li>
                         <li className="navbar__item">Goals</li>
+                        <li className="navbar__item">Recipes</li>
                     </ul>
                 </div>
             </header>

@@ -94,11 +94,28 @@
     font-family: Poppins Extra Bold;
     margin: 0;
     padding-bottom: 1rem;
+    padding-right: 2rem;
   }
 
   &__cals,
   &__cals-amt {
     display: none;
+  }
+
+  &__delete-wrapper {
+    display: flex;
+  }
+
+  &__delete-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 1rem;
+  }
+
+  &__delete {
+    width: 1em;
   }
 }
 
