@@ -4,4 +4,15 @@ function getLunchInformation(req, res) {
   res.status(200).json(model.getLunch())
 }
 
-module.exports = { getLunchInformation }
+function addFood(req, res) {
+  const newLunch = {
+    item: req.body.name,
+    carbs: req.body.carbs,
+    calories: req.body.calories,
+    fats: req.body.fats,
+    protein: req.body.protein,
+  }
+  res.status(201).json(model.addMeal(newLunch))
+}
+
+module.exports = { getLunchInformation, addFood }

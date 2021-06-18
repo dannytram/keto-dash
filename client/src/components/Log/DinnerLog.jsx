@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import './Log.scss'
-
+import Delete from '../../assets/images/Delete.png'
 
 class DinnerLog extends Component {
     state = {
-        carbs: [],
+        carbs: 0,
         calories: [],
         fats: [],
         protein: [],
@@ -13,11 +13,38 @@ class DinnerLog extends Component {
         dinnerItems: [],
     }
 
+    findTotal = (breakfastItems) => {
+        let initialValue = 0
+        let total = breakfastItems.reduce(function (
+            accumlator,
+            currentValue
+        ) {
+            return accumlator + Number(currentValue.carbs)
+        },
+            initialValue)
+
+        return total
+    }
+
+
+    financial = (x) => {
+        return Number.parseFloat(x).toFixed(2)
+    }
+
     changeBreakfast = (e) => {
         e.preventDefault()
         const form = e.target
         const meal = form.meal.value
         this.setState({ query: meal })
+    }
+
+    componentDidMount(response) {
+        axios.get(`http://localhost:8080/dinner`).then((response) => {
+            this.setState({
+                dinnerItems: response.data,
+                carbs: this.findTotal(response.data)
+            })
+        })
     }
 
 
@@ -36,10 +63,21 @@ class DinnerLog extends Component {
                         fats: response.data.totalNutrients.FAT.quantity,
                         protein: response.data.totalNutrients.PROCNT.quantity,
                     }
-                    dinnerLog.push(addedItems)
-                    this.setState({
-                        dinnerItems: dinnerLog,
-                    })
+                    //     dinnerLog.push(addedItems)
+                    //     this.setState({
+                    //         dinnerItems: dinnerLog,
+                    //     })
+                    // })
+                    axios
+                        .post(`http://localhost:8080/dinner`, addedItems)
+                        .then((response) => {
+                            axios.get(`http://localhost:8080/dinner`).then((response) => {
+                                this.setState({
+                                    dinnerItems: response.data,
+                                    carbs: this.findTotal(response.data)
+                                })
+                            })
+                        })
                 })
                 .catch((error) => {
                     console.log(error)
@@ -72,11 +110,20 @@ class DinnerLog extends Component {
                             <div className='mobile-log__log-wrapper'>
                                 <div className='mobile-log__log'>
                                     <div className='mobile-log__food'>
-                                        <h4 className='mobile-log__food'>{item.name}</h4>
+                                        <h4 className='mobile-log__food'>{item.item}</h4>
                                     </div>
-                                    <div>
-                                        <h4 className='mobile-log__carbs'>Carbs</h4>
-                                        <p className='mobile-log__carbs-amt'>{item.carbs}</p>
+                                    <div className='mobile-log__delete-wrapper'>
+                                        <div>
+                                            <h4 className='mobile-log__carbs'>Carbs</h4>
+                                            <p className='mobile-log__carbs-amt'>{item.carbs}</p>
+                                        </div>
+                                        <div className='mobile-log__delete-container'>
+                                            <img
+                                                className='mobile-log__delete'
+                                                src={Delete}
+                                                alt='Delete this item'
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -88,7 +135,7 @@ class DinnerLog extends Component {
                             <div>
                                 <h4 className='mobile-log__total-carbs'>Carbs</h4>
                                 <p className='mobile-log__carbs-amt'>
-                                    {this.state.carbs.quantity}
+                                    {this.state.carbs}
                                 </p>
                             </div>
                         </div>
@@ -116,7 +163,7 @@ class DinnerLog extends Component {
                             <div className='tablet-log__log-wrapper'>
                                 <div className='tablet-log__log'>
                                     <div className='tablet-log__food'>
-                                        <h4 className='tablet-log__food'>{item.name}</h4>
+                                        <h4 className='tablet-log__food'>{item.item}</h4>
                                     </div>
                                     <div className='tablet-log__stats'>
                                         <div>

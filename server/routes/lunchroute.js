@@ -4,4 +4,6 @@ const controller = require('../controller/lunchcontroller')
 
 router.get('/', controller.getLunchInformation)
 
+router.post('/', controller.addFood)
+
 module.exports = router

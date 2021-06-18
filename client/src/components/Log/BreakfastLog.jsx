@@ -3,16 +3,9 @@ import axios from 'axios'
 import './Log.scss'
 import Delete from '../../assets/images/Delete.png'
 
-// let query = '100g brown rice'
-
-//   carbs: response.data.totalNutrients.CHOCDF,
-//   calories: response.data.calories,
-//   fats: response.data.totalNutrients.FAT,
-//   protein: response.data.totalNutrients.PROCNT,
-
 class BreakfastLog extends Component {
     state = {
-        carbs: [],
+        carbs: 0,
         calories: [],
         fats: [],
         protein: [],
@@ -22,11 +15,11 @@ class BreakfastLog extends Component {
 
     findTotal = (breakfastItems) => {
         let initialValue = 0
-        let total = breakfastItems.carbs.reduce(function (
+        let total = breakfastItems.reduce(function (
             accumlator,
             currentValue
         ) {
-            return accumlator + currentValue.x
+            return accumlator + Number(currentValue.carbs)
         },
             initialValue)
 
@@ -48,6 +41,7 @@ class BreakfastLog extends Component {
         axios.get(`http://localhost:8080/breakfast`).then((response) => {
             this.setState({
                 breakfastItems: response.data,
+                carbs: this.findTotal(response.data)
             })
         })
     }
@@ -66,16 +60,13 @@ class BreakfastLog extends Component {
                         fats: response.data.totalNutrients.FAT.quantity.toFixed(1),
                         protein: response.data.totalNutrients.PROCNT.quantity.toFixed(1),
                     }
-                    // breakfastLog.push(addedItems)
-                    // this.setState({
-                    //   breakfastItems: breakfastLog,
-                    // })
                     axios
                         .post(`http://localhost:8080/breakfast`, addedItems)
                         .then((response) => {
                             axios.get(`http://localhost:8080/breakfast`).then((response) => {
                                 this.setState({
                                     breakfastItems: response.data,
+                                    carbs: this.findTotal(response.data)
                                 })
                             })
                         })
@@ -132,12 +123,12 @@ class BreakfastLog extends Component {
                         <div className='mobile-log__log'>
                             <div className='mobile-log__food'>
                                 <h4 className='mobile-log__total-food'>Total</h4>
-                                {/* <p>{findTotal()}</p> */}
+
                             </div>
                             <div>
                                 <h4 className='mobile-log__total-carbs'>Carbs</h4>
                                 <p className='mobile-log__carbs-amt'>
-                                    {this.state.carbs.quantity}
+                                    {this.state.carbs}
                                 </p>
                             </div>
                         </div>
@@ -184,6 +175,11 @@ class BreakfastLog extends Component {
                                             <h4 className='tablet-log__protein'> Protein</h4>
                                             <p className='tablet-log__protein-amt'>{item.protein}</p>
                                         </div>
+                                        <img
+                                            className='tablet-log__delete'
+                                            src={Delete}
+                                            alt='Delete this item'
+                                        />
                                     </div>
                                 </div>
                             </div>
