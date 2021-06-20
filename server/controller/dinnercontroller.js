@@ -1,4 +1,5 @@
 const model = require('../model/dinnermodel')
+const { getDinner } = require('../model/dinnermodel')
 const fs = require('fs');
 
 function getDinnerInformation(req, res) {
@@ -16,12 +17,14 @@ function addFood(req, res) {
   res.status(201).json(model.addMeal(newDinner))
 }
 
-// function deleteFood(req, res) {
-//   const { id } = req.params;
-//   const deleteFoodItem = getBreakfast.findIndex(item => item.id === id)
-//   getBreakfast.spice(deleteFoodItem, 1);
-//   fs.writeFileSync('./data/breakfast.json');
-//   res.status(201).json(getBreakfast)
-// }
+function deleteFood(req, res) {
+  const { id } = req.params;
+  const dinnerItems = getDinner()
+  const deleteFoodItem = dinnerItems.findIndex(item => item.id === id)
+  dinnerItems.splice(deleteFoodItem, 1);
+  fs.writeFileSync('./data/dinner.json', JSON.stringify(dinnerItems));
+  res.status(201).json(dinnerItems)
+}
 
-module.exports = { getDinnerInformation, addFood }
+
+module.exports = { getDinnerInformation, addFood, deleteFood }

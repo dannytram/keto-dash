@@ -6,26 +6,71 @@ import Delete from '../../assets/images/Delete.png'
 class BreakfastLog extends Component {
     state = {
         carbs: 0,
-        calories: [],
-        fats: [],
-        protein: [],
+        calories: 0,
+        fats: 0,
+        protein: 0,
         query: '',
         breakfastItems: [],
     }
 
-    //SEND STATE OF CARBS TO PARENT
-    sendCarbs = () => {
+    //SEND STATE OF NUTRIENTS TO PARENT
+    sendNutrients = () => {
         this.props.carbsHandler(this.state.carbs)
+        this.props.caloriesHandler(this.state.calories)
+        this.props.fatsHandler(this.state.fats)
+        this.props.proteinHandler(this.state.protein)
     }
 
     //TOTAL ALL CARBS AND RETURN 1 VALUE
-    findTotal = (breakfastItems) => {
+    findTotalCarbs = (breakfastItems) => {
         let initialValue = 0
         let total = breakfastItems.reduce(function (
             accumlator,
             currentValue
         ) {
             return accumlator + Number(currentValue.carbs)
+        },
+            initialValue)
+
+        return total
+    }
+
+     //TOTAL ALL CALORIES AND RETURN 1 VALUE
+    findTotalCalories = (breakfastItems) => {
+        let initialValue = 0
+        let total = breakfastItems.reduce(function (
+            accumlator,
+            currentValue
+        ) {
+            return accumlator + Number(currentValue.calories)
+        },
+            initialValue)
+
+        return total
+    }
+
+    //TOTAL ALL FATS AND RETURN 1 VALUE
+    findTotalFats = (breakfastItems) => {
+        let initialValue = 0
+        let total = breakfastItems.reduce(function (
+            accumlator,
+            currentValue
+        ) {
+            return accumlator + Number(currentValue.fats)
+        },
+            initialValue)
+
+        return total
+    }
+
+    //TOTAL ALL PROTEINS AND RETURN 1 VALUE
+    findTotalProteins = (breakfastItems) => {
+        let initialValue = 0
+        let total = breakfastItems.reduce(function (
+            accumlator,
+            currentValue
+        ) {
+            return accumlator + Number(currentValue.protein)
         },
             initialValue)
 
@@ -50,7 +95,10 @@ class BreakfastLog extends Component {
         axios.get(`http://localhost:8080/breakfast`).then((response) => {
             this.setState({
                 breakfastItems: response.data,
-                carbs: this.findTotal(response.data)
+                carbs: this.findTotalCarbs(response.data),
+                calories: this.findTotalCalories(response.data),
+                fats: this.findTotalFats(response.data),
+                protein: this.findTotalProteins(response.data)
             })
         }
         )
@@ -90,12 +138,21 @@ class BreakfastLog extends Component {
                             axios
                                 .get(`http://localhost:8080/breakfast`)
                                 .then((response) => {
-                                    const totalCarbs = this.findTotal(response.data)
+                                    const totalCarbs = this.findTotalCarbs(response.data)
+                                    const totalCalories = this.findTotalCalories(response.data)
+                                    const totalFats = this.findTotalFats(response.data)
+                                    const totalProteins = this.findTotalProteins(response.data)
                                     this.setState({
                                         breakfastItems: response.data,
-                                        carbs: totalCarbs
+                                        carbs: totalCarbs,
+                                        calories: totalCalories,
+                                        fats: totalFats,
+                                        protein: totalProteins,
                                     })
                                     this.props.carbsHandler(totalCarbs)
+                                    this.props.caloriesHandler(totalCalories)
+                                    this.props.fatsHandler(totalFats)
+                                    this.props.proteinHandler(totalProteins)
                                 })
                         })
                 })
@@ -210,12 +267,14 @@ class BreakfastLog extends Component {
                                             className='tablet-log__delete'
                                             src={Delete}
                                             alt='Delete this item'
-                                        />
+                                            onClick={() => {
+                                                this.handleDelete(item.id)
+                                            }} />
                                     </div>
                                 </div>
                             </div>
                         ))}
-                        <div className='tablet-log__log'>
+                        <div className='tablet-log__total-log'>
                             <div className='tablet-log__food'>
                                 <h4 className='tablet-log__total-food'>Total</h4>
                             </div>
@@ -223,23 +282,23 @@ class BreakfastLog extends Component {
                                 <div>
                                     <h4 className='tablet-log__total-carbs'>Carbs</h4>
                                     <p className='tablet-log__carbs-amt'>
-                                        {this.state.carbs.quantity}{' '}
+                                        {this.state.carbs.toFixed(1)}
                                     </p>
                                 </div>
                                 <div>
                                     <h4 className='tablet-log__total-cals'> Calories</h4>
-                                    <p className='tablet-log__cals-amt'>{this.state.calories} </p>
+                                    <p className='tablet-log__cals-amt'>{this.state.calories.toFixed(1)} </p>
                                 </div>
                                 <div>
                                     <h4 className='tablet-log__total-fats'> Fats</h4>
                                     <p className='tablet-log__fats-amt'>
-                                        {this.state.fats.quantity}{' '}
+                                        {this.state.fats.toFixed(1)}
                                     </p>
                                 </div>
                                 <div>
                                     <h4 className='tablet-log__total-protein'> Protein</h4>
                                     <p className='tablet-log__protein-amt'>
-                                        {this.state.protein.quantity}{' '}
+                                    {this.state.protein.toFixed(1)}
                                     </p>
                                 </div>
                             </div>

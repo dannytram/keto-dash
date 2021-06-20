@@ -32,6 +32,9 @@ const responsive = {
 class Dashboard extends Component {
     state = {
         carbs: 0,
+        calories: 0,
+        fats: 0,
+        protein: 0,
     }
 
     financial = (x) => {
@@ -39,16 +42,40 @@ class Dashboard extends Component {
     }
 
 
-    dataHandler = (totalCarbs) => {
-        this.setState({carbs: totalCarbs}, () => {
+    carbsHandler = (totalCarbs) => {
+        this.setState({ carbs: totalCarbs }, () => {
             console.log(this.state)
         })
         console.log(totalCarbs)
     }
 
-    componentDidMount(res){
+    caloriesHandler = (totalCalories) => {
+        this.setState({ calories: totalCalories }, () => {
+            console.log(this.state)
+        })
+        console.log(totalCalories)
+    }
+
+    fatsHandler = (totalFats) => {
+        this.setState({ fats: totalFats }, () => {
+            console.log(this.state)
+        })
+        console.log(totalFats)
+    }
+
+    proteinHandler = (totalProtein) => {
+        this.setState({ protein: totalProtein }, () => {
+            console.log(this.state)
+        })
+        console.log(totalProtein)
+    }
+
+    componentDidMount(res) {
         this.setState({
             carbs: this.state.carbs,
+            calories: this.state.calories,
+            fats: this.state.fats,
+            protein: this.state.protein,
         })
     }
 
@@ -57,13 +84,25 @@ class Dashboard extends Component {
             <div>
                 <NavBar />
                 <Carousel responsive={responsive}>
-                    <CardsCarbs title='Net Carbs' carbs={this.state.carbs.toFixed(1)}/>
-                    <CardsCals title='Calories' />
-                    <CardsFats title='Fats' />
+                    <CardsCarbs title='Net Carbs' carbs={this.state.carbs.toFixed(1)} />
+                    <CardsCals title='Calories' carlories={this.state.calories.toFixed(1)} />
+                    <CardsFats title='Fats' fats={this.state.fats.toFixed(1)} />
                 </Carousel>
-                <BreakfastLog carbsHandler={this.dataHandler}/>
-                <LunchLog />
-                <DinnerLog />
+                <BreakfastLog
+                    carbsHandler={this.carbsHandler}
+                    caloriesHandler={this.caloriesHandler}
+                    fatsHandler={this.fatsHandler}
+                    proteinHandler={this.proteinHandler} />
+                <LunchLog
+                    carbsHandler={this.carbsHandler}
+                    caloriesHandler={this.caloriesHandler}
+                    fatsHandler={this.fatsHandler}
+                    proteinHandler={this.proteinHandler} />
+                <DinnerLog
+                    carbsHandler={this.carbsHandler}
+                    caloriesHandler={this.caloriesHandler}
+                    fatsHandler={this.fatsHandler}
+                    proteinHandler={this.proteinHandler} />
             </div>
         )
     }

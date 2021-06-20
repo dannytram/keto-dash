@@ -5,7 +5,7 @@ import "./Cards.scss"
 
 
 
-function Cards(props) {
+function CardsCarbs(props) {
 
     const value = props.carbs;
 
@@ -28,4 +28,4 @@ function Cards(props) {
     )
 }
 
-export default Cards
+export default CardsCarbs

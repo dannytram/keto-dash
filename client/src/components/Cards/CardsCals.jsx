@@ -3,10 +3,11 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import "./Cards.scss"
 
-const value = 600;
 
+function CardsCals(props) {
 
-function Cards(props) {
+    const value = props.calories;
+
     return (
         <div className="card">
             <div className="card__body">
@@ -27,4 +28,4 @@ function Cards(props) {
     )
 }
 
-export default Cards
+export default CardsCals
