@@ -3,10 +3,12 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import "./Cards.scss"
 
-const value = 5;
 
 
 function Cards(props) {
+
+    const value = props.carbs;
+
     return (
         <div className="card">
             <div className="card__body">

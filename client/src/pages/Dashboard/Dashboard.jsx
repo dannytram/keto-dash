@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import NavBar from '../../components/NavBar/NavBar'
 import Carousel from 'react-multi-carousel'
 import CardsCarbs from '../../components/Cards/CardsCarbs'
@@ -11,7 +11,6 @@ import 'react-multi-carousel/lib/styles.css'
 
 const responsive = {
     superLargeDesktop: {
-        // the naming can be any, depends on you.
         breakpoint: { max: 4000, min: 3000 },
         items: 5,
     },
@@ -29,20 +28,45 @@ const responsive = {
     },
 }
 
-function Dashboard() {
-    return (
-        <div>
-            <NavBar />
-            <Carousel responsive={responsive}>
-                <CardsCarbs title='Net Carbs' />
-                <CardsCals title='Calories' />
-                <CardsFats title='Fats'/>
-            </Carousel>
-            <BreakfastLog/>
-            <LunchLog />
-            <DinnerLog />
-        </div>
-    )
+
+class Dashboard extends Component {
+    state = {
+        carbs: 0,
+    }
+
+    financial = (x) => {
+        return Number.parseFloat(x).toFixed(2)
+    }
+
+
+    dataHandler = (totalCarbs) => {
+        this.setState({carbs: totalCarbs}, () => {
+            console.log(this.state)
+        })
+        console.log(totalCarbs)
+    }
+
+    componentDidMount(res){
+        this.setState({
+            carbs: this.state.carbs,
+        })
+    }
+
+    render() {
+        return (
+            <div>
+                <NavBar />
+                <Carousel responsive={responsive}>
+                    <CardsCarbs title='Net Carbs' carbs={this.state.carbs.toFixed(1)}/>
+                    <CardsCals title='Calories' />
+                    <CardsFats title='Fats' />
+                </Carousel>
+                <BreakfastLog carbsHandler={this.dataHandler}/>
+                <LunchLog />
+                <DinnerLog />
+            </div>
+        )
+    }
 }
 
 export default Dashboard

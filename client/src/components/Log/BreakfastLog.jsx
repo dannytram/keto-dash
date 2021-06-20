@@ -13,6 +13,12 @@ class BreakfastLog extends Component {
         breakfastItems: [],
     }
 
+    //SEND STATE OF CARBS TO PARENT
+    sendCarbs = () => {
+        this.props.carbsHandler(this.state.carbs)
+    }
+
+    //TOTAL ALL CARBS AND RETURN 1 VALUE
     findTotal = (breakfastItems) => {
         let initialValue = 0
         let total = breakfastItems.reduce(function (
@@ -26,10 +32,12 @@ class BreakfastLog extends Component {
         return total
     }
 
+    //ROUND ALL THE VALUES TO 2 DECIMALS
     financial = (x) => {
         return Number.parseFloat(x).toFixed(2)
     }
 
+    //SET THE QUERY AS THE FORM INPUT VALUE
     changeBreakfast = (e) => {
         e.preventDefault()
         const form = e.target
@@ -37,15 +45,31 @@ class BreakfastLog extends Component {
         this.setState({ query: meal })
     }
 
-    componentDidMount(response) {
+    // GETTING THE LATEST STATE TO MOUNT
+    updateBreakfastLog = () => {
         axios.get(`http://localhost:8080/breakfast`).then((response) => {
             this.setState({
                 breakfastItems: response.data,
                 carbs: this.findTotal(response.data)
             })
-        })
+        }
+        )
     }
 
+    // DELETING AN INPUT THEN UPDATING STATE
+    handleDelete = (id) => {
+        axios
+            .delete(`http://localhost:8080/breakfast/${id}`)
+            .then(this.updateBreakfastLog);
+    };
+
+    // MOUNTING COMPONENTS
+    componentDidMount() {
+        this.updateBreakfastLog();
+    }
+
+
+    // UPDATE COMPONENT BASED ON QUERY
     componentDidUpdate(prevProps, prevState) {
         if (prevState.query !== this.state.query) {
             axios
@@ -63,12 +87,16 @@ class BreakfastLog extends Component {
                     axios
                         .post(`http://localhost:8080/breakfast`, addedItems)
                         .then((response) => {
-                            axios.get(`http://localhost:8080/breakfast`).then((response) => {
-                                this.setState({
-                                    breakfastItems: response.data,
-                                    carbs: this.findTotal(response.data)
+                            axios
+                                .get(`http://localhost:8080/breakfast`)
+                                .then((response) => {
+                                    const totalCarbs = this.findTotal(response.data)
+                                    this.setState({
+                                        breakfastItems: response.data,
+                                        carbs: totalCarbs
+                                    })
+                                    this.props.carbsHandler(totalCarbs)
                                 })
-                            })
                         })
                 })
                 .catch((error) => {
@@ -114,6 +142,9 @@ class BreakfastLog extends Component {
                                                 className='mobile-log__delete'
                                                 src={Delete}
                                                 alt='Delete this item'
+                                                onClick={() => {
+                                                    this.handleDelete(item.id)
+                                                }}
                                             />
                                         </div>
                                     </div>
@@ -128,7 +159,7 @@ class BreakfastLog extends Component {
                             <div>
                                 <h4 className='mobile-log__total-carbs'>Carbs</h4>
                                 <p className='mobile-log__carbs-amt'>
-                                    {this.state.carbs}
+                                    {this.state.carbs.toFixed(1)}
                                 </p>
                             </div>
                         </div>
