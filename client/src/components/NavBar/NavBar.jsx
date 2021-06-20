@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import Logo from "../../assets/images/Logo.png"
 import "./NavBar.scss"
 
-function NavBar() {
+function NavBar({handleLogout}) {
     return (
         <div>
             <header className="navbar">
@@ -16,6 +16,7 @@ function NavBar() {
                         <li className="navbar__item">Progress</li>
                         <li className="navbar__item">Goals</li>
                         <li className="navbar__item">Recipes</li>
+                        <li onClick ={handleLogout}>Logout</li>
                     </ul>
                 </div>
             </header>

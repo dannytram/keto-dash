@@ -10,7 +10,7 @@ function Header() {
                 <img className="header__logo" src={Logo} alt="Keto Dash" href ="/" />
                 <div>
                     <Button
-                        href="/dashboard"
+                        href="/login"
                         size="small"
                         variant="text"
                         color="default">

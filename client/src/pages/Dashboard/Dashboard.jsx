@@ -8,6 +8,7 @@ import BreakfastLog from '../../components/Log/BreakfastLog'
 import LunchLog from '../../components/Log/LunchLog'
 import DinnerLog from '../../components/Log/DinnerLog'
 import 'react-multi-carousel/lib/styles.css'
+import fire from '../../Fire'
 
 const responsive = {
     superLargeDesktop: {
@@ -35,6 +36,10 @@ class Dashboard extends Component {
         calories: 0,
         fats: 0,
         protein: 0,
+    }
+
+    handleLogout = () => {
+        fire.auth().signOut()
     }
 
     financial = (x) => {
@@ -79,10 +84,11 @@ class Dashboard extends Component {
         })
     }
 
+
     render() {
         return (
             <div>
-                <NavBar />
+                <NavBar handleLogout={this.handleLogout}/>
                 <Carousel responsive={responsive}>
                     <CardsCarbs title='Net Carbs' carbs={this.state.carbs.toFixed(1)} />
                     <CardsCals title='Calories' carlories={this.state.calories.toFixed(1)} />
