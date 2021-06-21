@@ -20,7 +20,7 @@ function HomePage() {
                         variant="contained"
                         color="#default">
                         Start Today!
-            </Button>
+                    </Button>
                 </div>
                 <div>
                     <img className="hero__image" src={Demo} alt="Demo" />
@@ -28,7 +28,7 @@ function HomePage() {
             </section>
             <section className="info-section">
                 <div className="info-section__section1">
-                    <img className="info-section__coupleimg" src={CoupleImage} alt="Couple"/>
+                    <img className="info-section__coupleimg" src={CoupleImage} alt="Couple" />
                     <div className="info-section__coupletxt">
                         <h1 className="info-section__coupletxt-h1"> Focus On What Really Matters </h1>
                         <h4> Keto Dash will take care of the dirty stuff so you can focus on what really matters. We will help you:</h4>
@@ -44,12 +44,12 @@ function HomePage() {
             </section>
             <section>
                 <div className="info-section__section2">
-                    <img className="info-section__phoneimg" src={PhoneImage} alt="Phone"/>
+                    <img className="info-section__phoneimg" src={PhoneImage} alt="Phone" />
                     <div className="info-section__phonetxt">
-                    <h1 className="info-section__phonetxt-h1"> Just The Way You Like It</h1>
+                        <h1 className="info-section__phonetxt-h1"> Just The Way You Like It</h1>
                         <h4> Keto Dash is fully customizable and personalized. See only what you need to succeed in your own lifestyle. Personalized metrics such as:</h4>
                         <ul className="info-section__section2-list">
-                        <li className="info-section__section2-list-item"> Net Carbs </li>
+                            <li className="info-section__section2-list-item"> Net Carbs </li>
                             <li className="info-section__section2-list-item"> Nutrition </li>
                             <li className="info-section__section2-list-item"> Supplments </li>
                             <li className="info-section__section2-list-item"> Weight Goals </li>

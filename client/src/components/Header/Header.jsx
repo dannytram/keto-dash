@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom"
 import Button from "@material-ui/core/Button"
 import Logo from "../../assets/images/Logo.png"
 import "./Header.scss"
@@ -7,7 +8,9 @@ function Header() {
     return (
         <div>
             <header className="header">
-                <img className="header__logo" src={Logo} alt="Keto Dash" href ="/" />
+                <Link to="/">
+                    <img className="header__logo" src={Logo} alt="Keto Dash" href="/" />
+                </Link>
                 <div>
                     <Button
                         href="/login"
@@ -15,14 +18,14 @@ function Header() {
                         variant="text"
                         color="default">
                         Login
-            </Button>
+                    </Button>
                     <Button
                         href="#"
                         size="small"
                         variant="contained"
                         color="default">
                         Sign Up
-            </Button>
+                    </Button>
                 </div>
             </header>
         </div>

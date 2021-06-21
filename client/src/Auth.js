@@ -59,9 +59,6 @@ const Auth = () => {
             })
     }
 
-    const handleLogout = () => {
-        fire.auth().signOut()
-    }
 
     const authListener = () => {
         fire.auth().onAuthStateChanged(user => {
@@ -81,7 +78,7 @@ const Auth = () => {
     return (
         <div>
             {user ? (
-                <Dashboard handleLogout={handleLogout} />
+                <Dashboard />
             ) : (
                 <Login
                     email={email}

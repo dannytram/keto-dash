@@ -45,6 +45,12 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            padding: 3rem 5rem;
+        }
     }
 
     &__section2{
@@ -53,6 +59,12 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        @include tablet {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: center;
+            padding: 3rem 5rem;
+        }
     }
 
     &__coupleimg,
@@ -70,6 +82,9 @@
         margin-top: 0;
         padding: 0 2rem 2rem 2rem;
         font-family: "Poppins";
+        @include tablet {
+            width: 30rem;
+        }
         }
 
     &__coupletxt-h1,
