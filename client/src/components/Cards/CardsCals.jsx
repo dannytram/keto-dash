@@ -20,7 +20,7 @@ function CardsCals(props) {
                     styles={buildStyles({
                         pathColor: '#cee5d0',
                         textColor: '#000000',
-                        textSize: '16px'
+                        textSize: '12px'
                     })} />
                 </div>
             </div>

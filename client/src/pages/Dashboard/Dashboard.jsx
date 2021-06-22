@@ -91,7 +91,7 @@ class Dashboard extends Component {
                 <NavBar handleLogout={this.handleLogout}/>
                 <Carousel responsive={responsive}>
                     <CardsCarbs title='Net Carbs' carbs={this.state.carbs.toFixed(1)} />
-                    <CardsCals title='Calories' carlories={this.state.calories.toFixed(1)} />
+                    <CardsCals title='Calories' calories={this.state.calories.toFixed(1)} />
                     <CardsFats title='Fats' fats={this.state.fats.toFixed(1)} />
                 </Carousel>
                 <BreakfastLog

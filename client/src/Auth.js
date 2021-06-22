@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import Login from './pages/LoginPage/LoginPage'
 import Dashboard from './pages/Dashboard/Dashboard'
 import fire from './Fire';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 const Auth = () => {
     const [user, setUser] = useState('');

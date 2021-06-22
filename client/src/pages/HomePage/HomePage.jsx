@@ -5,6 +5,7 @@ import "./HomePage.scss"
 import Demo from "../../assets/images/demo.png"
 import CoupleImage from "../../assets/images/homepageIMG1.png"
 import PhoneImage from "../../assets/images/PhoneImage.PNG"
+import Meal from "../../assets/images/MealImage.jpg"
 
 function HomePage() {
     return (
@@ -54,6 +55,22 @@ function HomePage() {
                             <li className="info-section__section2-list-item"> Supplments </li>
                             <li className="info-section__section2-list-item"> Weight Goals </li>
                             <li className="info-section__section2-list-item"> And much more </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section className="info-section">
+                <div className="info-section__section1">
+                    <img className="info-section__mealimg" src={Meal} alt="Couple" />
+                    <div className="info-section__coupletxt">
+                        <h1 className="info-section__coupletxt-h1"> Recipes To Help You Succeed </h1>
+                        <h4> Keto Dash and curates Keto and Low Carb recipes to help you achieve success in your diet</h4>
+                        <ul className="info-section__section1-list">
+                            <li className="info-section__section1-list-item"> Dinner </li>
+                            <li className="info-section__section1-list-item"> Lunch</li>
+                            <li className="info-section__section1-list-item"> Breakfast </li>
+                            <li className="info-section__section1-list-item"> Desserts </li>
+                            <li className="info-section__section1-list-item"> And maybe even a cheat meal </li>
                         </ul>
                     </div>
                 </div>

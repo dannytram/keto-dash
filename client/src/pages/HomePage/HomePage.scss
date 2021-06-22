@@ -6,6 +6,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 100% 0% 100% 0% / 0% 53% 47% 100% ;
 
     &__info{
         display: flex;
@@ -59,6 +60,8 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        background-color: #cee5d0;
+        border-radius: 100% 0% 100% 0% / 44% 100% 0% 56% ;
         @include tablet {
             display: flex;
             flex-direction: row-reverse;
@@ -68,7 +71,8 @@
     }
 
     &__coupleimg,
-    &__phoneimg{
+    &__phoneimg,
+    &__mealimg{
         border-radius: 10px;
         width: auto;
     }
