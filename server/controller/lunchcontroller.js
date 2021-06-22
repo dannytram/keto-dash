@@ -15,4 +15,14 @@ function addFood(req, res) {
   res.status(201).json(model.addMeal(newLunch))
 }
 
-module.exports = { getLunchInformation, addFood }
+function deleteFood(req, res) {
+  const { id } = req.params;
+  const dinnerItems = getDinner()
+  const deleteFoodItem = dinnerItems.findIndex(item => item.id === id)
+  dinnerItems.splice(deleteFoodItem, 1);
+  fs.writeFileSync('./data/dinner.json', JSON.stringify(dinnerItems));
+  res.status(201).json(dinnerItems)
+}
+
+
+module.exports = { getLunchInformation, addFood, deleteFood }

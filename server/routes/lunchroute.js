@@ -6,4 +6,6 @@ router.get('/', controller.getLunchInformation)
 
 router.post('/', controller.addFood)
 
+router.delete('/:id', controller.deleteFood)
+
 module.exports = router
