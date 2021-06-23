@@ -4,6 +4,7 @@ import Carousel from 'react-multi-carousel'
 import CardsCarbs from '../../components/Cards/CardsCarbs'
 import CardsCals from '../../components/Cards/CardsCals'
 import CardsFats from '../../components/Cards/CardsFats'
+import CardsProtein from '../../components/Cards/CardsProtein'
 import BreakfastLog from '../../components/Log/BreakfastLog'
 import LunchLog from '../../components/Log/LunchLog'
 import DinnerLog from '../../components/Log/DinnerLog'
@@ -93,6 +94,7 @@ class Dashboard extends Component {
                     <CardsCarbs title='Net Carbs' carbs={this.state.carbs.toFixed(1)} />
                     <CardsCals title='Calories' calories={this.state.calories.toFixed(1)} />
                     <CardsFats title='Fats' fats={this.state.fats.toFixed(1)} />
+                    <CardsProtein title='Protein' protein={this.state.fats.toFixed(1)}/>
                 </Carousel>
                 <BreakfastLog
                     carbsHandler={this.carbsHandler}
